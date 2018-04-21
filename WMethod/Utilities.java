@@ -10,52 +10,113 @@
 import java.io.*;
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Utilities.
+ */
 public class Utilities{
   
+  /** The fsm print sw. */
   public static boolean fsmPrintSw=true;
+  
+  /** The p table debug sw. */
   public static boolean pTableDebugSw=false;
+  
+  /** The testing tree debug sw. */
   public static boolean testingTreeDebugSw=false;
+  
+  /** The transition cover set debug sw. */
   public static boolean transitionCoverSetDebugSw=true; // To or not to print the transition cover set.
+  
+  /** The fsm creation debug sw. */
   public static boolean fsmCreationDebugSw=false;
+  
+  /** The fsm execution debug sw. */
   public static boolean fsmExecutionDebugSw=true;
+  
+  /** The W set debug sw. */
   public static boolean WSetDebugSw=true;
   
+  /**
+   * Debug ptable.
+   *
+   * @param s the s
+   */
   public static void debugPtable(String s){
     if(pTableDebugSw)
       System.out.println(s);
   }
   
+  /**
+   * Debug testing tree.
+   *
+   * @param s the s
+   */
   public static void debugTestingTree(String s){
     if(testingTreeDebugSw)
       System.out.println(s);
   }
   
+  /**
+   * Debug FSM.
+   *
+   * @param s the s
+   */
   public static void debugFSM(String s){
     if(fsmCreationDebugSw)
       System.out.println(s);
   }
   
+  /**
+   * Debug sort.
+   *
+   * @param s the s
+   */
   public static void debugSort(String s){
 	    if(fsmExecutionDebugSw)
 	        System.out.println(s);
   }
   
+  /**
+   * Debug FSM execution.
+   *
+   * @param s the s
+   */
   public static void debugFSMExecution(String s){
     if(fsmExecutionDebugSw)
       System.out.println(s);
   }
   
   
+  /**
+   * Debug W set.
+   *
+   * @param s the s
+   */
   public static void debugWSet(String s){
     if(WSetDebugSw)
       System.out.println(s);
   }
   
+  /**
+   * Prints the exception.
+   *
+   * @param c the c
+   * @param m the m
+   * @param s the s
+   */
   public static void printException(String c, String m, String s){
     System.out.println("\nException occured. \nClass:"+c +"\nMethod: "+m+"\n"+s);
     System.exit(0);
   }
   
+  /**
+   * Exists in vector.
+   *
+   * @param searchString the search string
+   * @param searchVector the search vector
+   * @return true, if successful
+   */
   public static boolean existsInVector(String searchString, Vector searchVector){
     for(int i = 0; i < searchVector.size(); i++){
       if((searchVector.get(i)).toString().equals(searchString)){
@@ -65,6 +126,11 @@ public class Utilities{
     return false;
   }// End of existsInVector()  
   
+  /**
+   * Prints the all test cases.
+   *
+   * @param testCases the test cases
+   */
   public static void printAllTestCases(Vector<String> testCases){
     System.out.println("\nNumber of Test Cases :"+ testCases.size());
     Collections.sort(testCases);
@@ -74,6 +140,14 @@ public class Utilities{
   
   
   
+  /**
+   * Run FSM.
+   *
+   * @param FSM the fsm
+   * @param stateID the state ID
+   * @param input the input
+   * @param separator the separator
+   */
   public static void runFSM(State [] FSM, int stateID, String input, String separator){
     
     // input is a sequence of  symbols  from the input alphabet separated by string in separator.

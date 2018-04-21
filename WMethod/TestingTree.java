@@ -6,20 +6,45 @@
 import java.io.*;
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestingTree.
+ */
 public class TestingTree{
 
   
+  /** The all states. */
   State [] allStates;  //all possible states in the tree
+  
+  /** The number of states. */
   int numberOfStates;  //total number of states
+  
+  /** The root. */
   TestingTreeNode root;  //root node
+  
+  /** The vertex nums. */
   int vertexNums;   //largest vertex number (for BFS)
+  
+  /** The BFS tree queue. */
   Vector BFSTreeQueue;  //queue for BFS tree
+  
+  /** The p values. */
   Vector pValues;   //vector of all values found for P-set
+  
+  /** The states in tree. */
   Vector<Integer> statesInTree;  //listing of all states currently in the tree
+  
+  /** The count. */
   int count;
   
   /* Constructor method for tree */
   
+  /**
+   * Instantiates a new testing tree.
+   *
+   * @param stateArray the state array
+   * @param numOfStates the num of states
+   */
   public TestingTree(State [] stateArray, int numOfStates){
     
     //initialize all variables
@@ -49,6 +74,12 @@ public class TestingTree{
   /* Returns true if a node is already in the statesInTree array, or more specifically,
    whether that state has been 'looked at' during the BFS. */
   
+  /**
+   * Found already.
+   *
+   * @param stateNumber the state number
+   * @return true, if successful
+   */
   public boolean foundAlready(int stateNumber){
     int count = 0;
     
@@ -65,6 +96,9 @@ public class TestingTree{
   
   /* Prints all values in the P vector. */
   
+  /**
+   * Prints the P values.
+   */
   public void printPValues(){
     int i = 0;
     System.out.println("\nTransition cover set (P). "+ (pValues.size()+1)+" entries.");
@@ -77,6 +111,11 @@ public class TestingTree{
     System.out.println();
   }// End of printPValues()
   
+  /**
+   * Gets the p values.
+   *
+   * @return the p values
+   */
   public Vector getPValues(){
     
     return pValues;
@@ -85,6 +124,11 @@ public class TestingTree{
   
   /* Build the testing tree. */
   
+  /**
+   * BFS build.
+   *
+   * @param startState the start state
+   */
   public void BFSBuild(TestingTreeNode startState){
     TestingTreeNode startingNode = startState;
     startState.level = 1;
@@ -134,6 +178,12 @@ public class TestingTree{
   
   /* Traverse the tree and gather the P set. */
   
+  /**
+   * Test traverse.
+   *
+   * @param root the root
+   * @param currentString the current string
+   */
   public void testTraverse(TestingTreeNode root, String currentString){
     int count = 0;
     while(count < root.branchVector.size()){

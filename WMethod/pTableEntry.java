@@ -5,16 +5,41 @@
 import java.io.*;
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class pTableEntry.
+ */
 public class pTableEntry{
 
   
+  /** The current group. */
   public int currentGroup;
+  
+  /** The current state. */
   public int currentState;
+  
+  /** The outputs. */
   public String[] outputs;
+  
+  /** The next states. */
   public String[] nextStates;
+  
+  /** The possible inputs. */
   public String[] possibleInputs;
+  
+  /** The next groups. */
   public String[] nextGroups;
   
+  /**
+   * Instantiates a new p table entry.
+   *
+   * @param cGroup the c group
+   * @param cState the c state
+   * @param outpt the outpt
+   * @param nxtst the nxtst
+   * @param posInp the pos inp
+   * @param ng the ng
+   */
   public pTableEntry(int cGroup, int cState,  String [] outpt, String [] nxtst, String [] posInp, String [] ng){
     currentGroup = cGroup;
     currentState = cState;
@@ -26,6 +51,12 @@ public class pTableEntry{
   }// End of pTableEntry()
   
   
+  /**
+   * Instantiates a new p table entry.
+   *
+   * @param s the s
+   * @param inputArray the input array
+   */
   public pTableEntry(State s, String[] inputArray){
     
     Utilities.debugPtable("HELLO");
@@ -72,6 +103,9 @@ public class pTableEntry{
   
   
   
+  /**
+   * Initialize arrays.
+   */
   public void initializeArrays(){
     for(int i = 0; i < nextStates.length; i++){
       nextStates[i] = "";
@@ -88,6 +122,9 @@ public class pTableEntry{
   
   
   
+  /**
+   * Prints the entry.
+   */
   public void printEntry(){
     System.out.println("TABLE ENTRY");
     System.out.println("STATE: " + currentState);
@@ -128,6 +165,11 @@ public class pTableEntry{
   
   
   
+  /**
+   * Return copy.
+   *
+   * @return the p table entry
+   */
   public pTableEntry returnCopy(){
 
     String [] newOutputs = new String[outputs.length];

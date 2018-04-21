@@ -5,6 +5,7 @@
 
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
 /**
  * 
  This class defines a state of any finite state machine. 
@@ -21,17 +22,35 @@ import java.util.*;
 public class State {
   
   
+  /** The id. */
   private int  ID; // Unique ID given to each state. (>=0)
+  
+  /** The description. */
   String description; // State description
+  
+  /** The out going edges. */
   private HashSet outGoingEdges; // Set of outgoing edges.
+  
+  /** The uio sequence. */
   private String uioSequence; // UIO sequence for this state.
+  
+  /** The state mark. */
   private boolean stateMark=false;  // State marker useful in some algorithms.
+  
+  /** The number of visits. */
   private int numberOfVisits=0;  // Number of times this state is visited.
+  
+  /** The max edges. */
   int maxEdges=20; // Max number of outgoing edges from any state.
   
   
   // Define a state.
   
+  /**
+   * Instantiates a new state.
+   *
+   * @param stateID the state ID
+   */
   public State(int stateID){
     if(ID<0){
       System.out.println("ID must be an integer>0. State not initialized.");
@@ -46,34 +65,61 @@ public class State {
   
   // Set (true), unset(false), and get mark.
   
+  /**
+   * Mark.
+   */
   public void mark(){
     stateMark=true;
   }
   
+  /**
+   * Un mark.
+   */
   public void unMark(){
     stateMark=false;
   }
   
   
+  /**
+   * Gets the mark.
+   *
+   * @return the mark
+   */
   public boolean getMark(){
     return(stateMark);
   }
   
   // Add to visits, initialize visits, return visits.
   
+  /**
+   * State visited.
+   */
   public void stateVisited(){
     numberOfVisits++;
   }
   
+  /**
+   * Reset visits.
+   */
   public void resetVisits(){
     numberOfVisits=0;
   }
   
+  /**
+   * Sets the visits.
+   *
+   * @param v the new visits
+   */
   public void setVisits(int v){
     numberOfVisits=v;
   }
   
   
+  /**
+   * Gets the visits.
+   *
+   * @return the visits
+   */
   public int getVisits(){
     return(numberOfVisits);
   }
@@ -81,32 +127,52 @@ public class State {
   // Add an edge to this state.
   // Note that the start state of e must be the same as ID.
   
+  /**
+   * Adds the edge.
+   *
+   * @param e the e
+   * @throws InvalidEdgeException the invalid edge exception
+   */
   public void addEdge(Edge e) throws InvalidEdgeException{
     if (!(e.head()==ID))throw new InvalidEdgeException();
     outGoingEdges.add(e);
   }
   
   
+  /**
+   * Removes the edge.
+   *
+   * @param e the e
+   */
   public void removeEdge(Edge e){
     outGoingEdges.remove(e);
   }
   
   
   
+  /**
+   * Gets the edge set.
+   *
+   * @return the edge set
+   */
   public HashSet  getEdgeSet(){
     return(outGoingEdges);
   }
+  
   /**
-   * 
-   Return ID
+   *    Return ID.
+   *
+   * @return the id
    */
   
   public int getID(){
     return ID;
   }
+  
   /**
-   * 
-   Return number of outgoing edges.
+   *    Return number of outgoing edges.
+   *
+   * @return the int
    */
   
   public int edgeCount(){
@@ -114,8 +180,11 @@ public class State {
   }
   
   /**
-   * 
-   Return next state ID when an input symbol is received.
+   *    Return next state ID when an input symbol is received.
+   *
+   * @param inputSymbol the input symbol
+   * @return the next state
+   * @throws NoNextStateException the no next state exception
    */
   
   public  Edge getNextState(String inputSymbol) throws  NoNextStateException{
@@ -130,8 +199,9 @@ public class State {
   
   
   /**
-   * 
-   Return the set of next states.
+   *    Return the set of next states.
+   *
+   * @return the next states
    */
   
   public  HashSet getNextStates() {
@@ -148,8 +218,9 @@ public class State {
   }
   
   /**
-   * 
-   Return the set of outgoing edge labels.
+   *    Return the set of outgoing edge labels.
+   *
+   * @return the labels
    */
   
   public  HashSet getLabels() {

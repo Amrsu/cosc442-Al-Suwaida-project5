@@ -1,6 +1,7 @@
 
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
 /**
  * 
  Defines an edge in a finite state machine.
@@ -15,12 +16,29 @@ import java.util.*;
 
 public class Edge {
   
+  /** The source state. */
   private int sourceState;
+  
+  /** The target state. */
   private int targetState;
+  
+  /** The label. */
   private String label;
+  
+  /** The output symbol. */
   private String inputSymbol, outputSymbol;
+  
+  /** The cost. */
   private int cost; // Cost of traversing this edge.
   
+  /**
+   * Instantiates a new edge.
+   *
+   * @param sourceID the source ID
+   * @param targetID the target ID
+   * @param inputS the input S
+   * @param outputS the output S
+   */
   public Edge(int sourceID, int targetID, String inputS, String outputS)
   {
     sourceState=sourceID;
@@ -31,6 +49,12 @@ public class Edge {
     cost=1;  // Default cost of traversal.
   }
   
+  /**
+   * Instantiates a new edge.
+   *
+   * @param sourceID the source ID
+   * @param targetID the target ID
+   */
   public Edge(int sourceID, int targetID)
   {
     sourceState=sourceID;
@@ -41,6 +65,13 @@ public class Edge {
     cost=1;  // Default cost of traversal.
   }
   
+  /**
+   * Instantiates a new edge.
+   *
+   * @param sourceID the source ID
+   * @param targetID the target ID
+   * @param costOfTraversal the cost of traversal
+   */
   public Edge(int sourceID, int targetID, int costOfTraversal)
   {
     sourceState=sourceID;
@@ -51,33 +82,62 @@ public class Edge {
     cost=costOfTraversal;  // Given cost of traversal.
   }
   
+  /**
+   * Instantiates a new edge.
+   */
   public Edge()
     
   {
     label="No label";
     cost=1; // Default cost.
   }
+  
+  /**
+   * Display edge.
+   *
+   * @return the string
+   */
   public String displayEdge()
   {
     
     return("("+Integer.toString(sourceState)+","+Integer.toString(targetState)+")"+" Label: " +label);
   }
   
+  /**
+   * Head.
+   *
+   * @return the int
+   */
   public int head()
   {
     return(sourceState);
   }
   
+  /**
+   * Tail.
+   *
+   * @return the int
+   */
   public int tail()
   {
     return(targetState);
   }
   
+  /**
+   * Gets the label.
+   *
+   * @return the label
+   */
   public String getLabel()
   {
     return(label);
   }
   
+  /**
+   * Input.
+   *
+   * @return the string
+   */
   // Return input symbol for this edge.
   public String input()
   {
@@ -85,6 +145,11 @@ public class Edge {
     
   }
   
+  /**
+   * Output.
+   *
+   * @return the string
+   */
   // Return output symbol for this edge.
   public String output()
   {
@@ -92,6 +157,11 @@ public class Edge {
     
   }
   
+  /**
+   * Gets the cost.
+   *
+   * @return the cost
+   */
   public int getCost()
   {
     return(cost);

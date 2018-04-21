@@ -5,13 +5,33 @@
 
 import java.io.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class pTable.
+ */
 public class pTable{
+  
+  /** The entries. */
   public pTableEntry[] entries;
+  
+  /** The num groups. */
   public int numGroups;
+  
+  /** The backup entries. */
   public pTableEntry[] backupEntries;
+  
+  /** The backup num groups. */
   public int backupNumGroups;
+  
+  /** The number of states. */
   public int numberOfStates;
   
+  /**
+   * Instantiates a new p table.
+   *
+   * @param entryArray the entry array
+   * @param numberOfGroups the number of groups
+   */
   public pTable(pTableEntry[] entryArray, int numberOfGroups){
     
     entries = entryArray;
@@ -22,6 +42,13 @@ public class pTable{
   }
   
   
+  /**
+   * Instantiates a new p table.
+   *
+   * @param stateArray the state array
+   * @param numStates the num states
+   * @param inputArray the input array
+   */
   public pTable(State [] stateArray, int numStates, String [] inputArray){
     numGroups = 1;
     entries = new pTableEntry[numStates];
@@ -48,6 +75,11 @@ public class pTable{
     Utilities.debugPtable("DONE.");
   }
   
+  /**
+   * Gets the p one.
+   *
+   * @return the p one
+   */
   public pTable getPOne(){
     
     //for all entries, check i and i+1 and see if they're the same. (output-wise)
@@ -115,6 +147,12 @@ public class pTable{
   }// End of getPOne()
   
   
+  /**
+   * Find group.
+   *
+   * @param nextState the next state
+   * @return the int
+   */
   public int findGroup(String nextState){
     //find out which entry it is, and then get the group number of that entry.
     int stateToFind = 0;
@@ -138,6 +176,11 @@ public class pTable{
   }// Ened of fineGroup()
   
   
+  /**
+   * Gets the p next.
+   *
+   * @return the p next
+   */
   public pTable getPNext(){
     
     //for all entries, check i and i+1 and see if they're the same. (nextGroup-wise)
@@ -212,6 +255,9 @@ public class pTable{
   } // End of getPNext()
   
   
+  /**
+   * Prints the table.
+   */
   public void printTable(){
     for(int m = 0; m < entries.length; m++){
       entries[m].printEntry();
@@ -219,6 +265,11 @@ public class pTable{
   }// End of printTable()
   
   
+  /**
+   * Return copy.
+   *
+   * @return the p table
+   */
   public pTable returnCopy(){
     
     pTableEntry [] copyEntries = new pTableEntry[numberOfStates];
@@ -233,6 +284,13 @@ public class pTable{
   }// End of returnCopy
 
   
+  /**
+   * G compare.
+   *
+   * @param state1 the state 1
+   * @param state2 the state 2
+   * @return the string
+   */
   public String GCompare(int state1, int state2){
     for(int i = 0; i < entries[state1-1].nextGroups.length; i++){
       if(!entries[state1-1].nextGroups[i].equals(entries[state2-1].nextGroups[i])){
@@ -243,6 +301,13 @@ public class pTable{
     return "";
   }// End of GCompare()
   
+  /**
+   * O.
+   *
+   * @param state the state
+   * @param symbol the symbol
+   * @return the string
+   */
   public String O (int state, String symbol){
     
     int inputPos = -1;
@@ -259,6 +324,13 @@ public class pTable{
   }// End of O()
   
   
+  /**
+   * O compare.
+   *
+   * @param state1 the state 1
+   * @param state2 the state 2
+   * @return the string
+   */
   public String OCompare(int state1, int state2){
     for(int i = 0; i < entries[state1-1].outputs.length; i++){
       if(!entries[state1-1].outputs[i].equals(entries[state2-1].outputs[i])){

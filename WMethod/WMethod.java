@@ -2,6 +2,7 @@
 import java.io.*;
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
 /**
  * 
  Program to compute the W-set for a given FSM.
@@ -28,49 +29,97 @@ import java.util.*;
 
 public class WMethod{
   
+  /** The debug mode 1. */
   private static String debugMode1="";  // No debugging.
+  
+  /** The debug mode 2. */
   private static String debugMode2="";
+  
+  /** The Constant maxStates. */
   public static final int maxStates=20;  // Max no of states in the FSM (=n).
+  
+  /** The Constant maxSequences. */
   public static final int maxSequences=100;  // Max no of sequences of length (2xnxn).
+  
+  /** The Constant maxEdges. */
   public static final int maxEdges=100;  // Max no of edges in the FSM.
+  
+  /** The Constant maxOutgoingEdges. */
   public static final int maxOutgoingEdges=20;  // Max no of outgoing edges/state.
+  
+  /** The Constant maxInputs. */
   public static final int maxInputs=50;  // Max ize of the input alphabet.
+  
+  /** The Constant maxOutputs. */
   public static final int maxOutputs=50;  // Max size of the output  alphabet.
+  
+  /** The Constant maxTransitions. */
   public static final int maxTransitions=250;  // Max number of transitions.
+  
+  /** The max labels. */
   public static int maxLabels=50; // Max number of distinct edge labels.
   
+  /** The fsm. */
   // An FSM state contains an ID, description, and a set of outgoing edges.
   public static State [] FSM =new State[maxStates]; // Area where the FSM will be stored.
+  
+  /** The number of states. */
   public static int numberOfStates; // Number of distinct states in the FSM.
+  
+  /** The start state. */
   public static int startState; // Starting state of the FSM.
   
   
+  /** The input alphabet. */
   Set inputAlphabet=new HashSet();// Contains input alphabet symbols.
+  
+  /** The output alphabet. */
   Set  outputAlphabet=new HashSet(); // Output alphabet symbols.
+  
+  /** The number of transitions. */
   public static int numberOfTransitions=0; // Total transitions in the FSM.
+  
+  /** The fsm filename. */
   public static String fsmFilename; // File containing the FSM description.
   
 
+  /** The number of transitions 2. */
   public static int numberOfTransitions2 = 0;
+  
+  /** The fsm filename 2. */
   public static String fsmFilename2;
   
+  /** The Opattern. */
   private static String [] Opattern=new String[maxEdges];; // Holds all patterns being tried out.
+  
+  /** The Oend. */
   private static int [] Oend=new int[maxEdges]; // Holds end tail state corresponding to each pattern in Opattern.
+  
+  /** The Oled. */
   private static Set [] Oled=new HashSet[maxEdges]; // Holds sets of edges corresponding to a labels.
   
   
+  /** The output array. */
   private static String[] outputArray = new String[maxOutputs]; //Output alphabet
+  
+  /** The input array. */
   private static String[] inputArray = new String[maxInputs]; // Input alphabet
+  
+  /** The count outputs. */
   private static int countOutputs = 0; //Size of the output alphabet
+  
+  /** The count inputs. */
   private static int countInputs = 0; // Size of the input alphabet
   
+  /** The file source. */
   private static Scanner fileSource; // Name of a Scanner object.
   
   
   /**
-   * 
-   Method to read the FSM description from a source file.
-   startState is assumed to be 1.
+   *    Method to read the FSM description from a source file.
+   *    startState is assumed to be 1.
+   *
+   * @return the fsm
    */
   
   public static void getFSM(){
@@ -105,6 +154,11 @@ public class WMethod{
   
   
   
+  /**
+   * Split transition.
+   *
+   * @param transition the transition
+   */
   static void splitTransition(String transition){
     
     /*
@@ -209,7 +263,10 @@ public class WMethod{
   } // End splitTransition()
   
   /**
-   Method to split an edge label of the form x/y to x and y.
+   *    Method to split an edge label of the form x/y to x and y.
+   *
+   * @param edgeToken the edge token
+   * @return the string[]
    */
   
   private static String []  splitEdgeLabel(String edgeToken){
@@ -223,8 +280,10 @@ public class WMethod{
   
   
   /**
-   * 
-   Find if a given state ID corresponds to a new state in the FSM.
+   *    Find if a given state ID corresponds to a new state in the FSM.
+   *
+   * @param stateID the state ID
+   * @return true, if successful
    */
   private static boolean newState(int stateID){
     if (FSM[stateID]!=null){
@@ -238,7 +297,9 @@ public class WMethod{
   
   
   /**
-   Method to print all states and transitions of the input FSM.
+   *    Method to print all states and transitions of the input FSM.
+   *
+   * @param inputAlphabet the input alphabet
    */
   
   public static void printFSM(String [] inputAlphabet){
@@ -282,6 +343,11 @@ public class WMethod{
     }
   }// End printFSM()
   
+  /**
+   * Gets the filename.
+   *
+   * @return the filename
+   */
   private static String getFilename(){
     System.out.print("Enter filename: "); // Prompt for file name containing FSM.
     String name=fileSource.nextLine();
@@ -291,6 +357,9 @@ public class WMethod{
  
   
   
+   /**
+    * Sort inputs.
+    */
    public static void sortInputs(){
     boolean Swapped = true;
     int csize = countInputs;
@@ -311,6 +380,13 @@ public class WMethod{
     
   }// End of sortInput()
    
+    /**
+     * Exists in vector.
+     *
+     * @param searchString the search string
+     * @param searchVector the search vector
+     * @return true, if successful
+     */
     public static boolean existsInVector(String searchString, Vector searchVector){
       for(int i = 0; i < searchVector.size(); i++){
         if((searchVector.get(i)).toString().equals(searchString)){
@@ -321,6 +397,13 @@ public class WMethod{
     }// End of existsInVector()  
     
   
+   /**
+    * Generate tests.
+    *
+    * @param tree the tree
+    * @param tablemanager the tablemanager
+    * @return the vector
+    */
    public static Vector<String> generateTests(TestingTree tree, pTableManager tablemanager){
     Vector <String> pVector = new Vector<String>();
     Vector wVector = new Vector();
@@ -348,6 +431,11 @@ public class WMethod{
      return testCases;
    }// End generateTests.
    
+   /**
+    * The main method.
+    *
+    * @param args the arguments
+    */
    /* 
    Driver for the W-algorithm.
    */
@@ -385,7 +473,8 @@ public class WMethod{
      // 		the FSM using the Utilities.runFSM() method. 
      //
      // Example use of the Utilities.runFSM() method
-     // Utilities.runFSM(FSM, 1, "a a b a b", " ");
+     //Utilities.runFSM(FSM, 1, "a a b a b", " ");
+   
      
    }// End of main()
    

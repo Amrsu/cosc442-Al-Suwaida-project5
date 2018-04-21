@@ -8,18 +8,44 @@ import java.io.*;
 
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class pTableManager.
+ */
 public class pTableManager{
   
   
+  /** The table array. */
   public pTable[] tableArray;
+  
+  /** The FSM array. */
   public State[] FSMArray;
+  
+  /** The current number of groups. */
   public int currentNumberOfGroups;
+  
+  /** The max tables. */
   public static int maxTables = 50;
+  
+  /** The number of states. */
   public int numberOfStates;
+  
+  /** The w. */
   public Vector  W;
+  
+  /** The table count. */
   public int tableCount;
+  
+  /** The first table. */
   public pTable firstTable;
   
+  /**
+   * Instantiates a new p table manager.
+   *
+   * @param stateArray the state array
+   * @param numStates the num states
+   * @param inputArray the input array
+   */
   public pTableManager(State [] stateArray, int numStates, String [] inputArray){
     tableArray = new pTable[maxTables]; // Create array to hold P-tables
     FSMArray = stateArray;
@@ -71,6 +97,11 @@ public class pTableManager{
   }//End of pTableManager()
   
   
+  /**
+   * Calculate W.
+   *
+   * @param stateArray the state array
+   */
   public void calculateW(State[] stateArray){
     String z = "";
     
@@ -166,6 +197,11 @@ public class pTableManager{
   }// End of calculateW()
   
   
+  /**
+   * Prints the W.
+   *
+   * @param EW the ew
+   */
   public void printW(Vector EW){
       System.out.println("\nW Set. "+ W.size()+" entries.");
       Collections.sort(W);
@@ -178,6 +214,11 @@ public class pTableManager{
       System.out.println();
   }// End of printW()
   
+  /**
+   * Gets the w.
+   *
+   * @return the w
+   */
   public Vector getW(){
     return W;
     
