@@ -469,20 +469,49 @@ public class WMethod{
      Vector <String> tests=generateTests(transitionCover, w); // Generate tests.
      Utilities.printAllTestCases(tests); // Print tests.
      
-     IterateOverArray(tests);
+     //IterateOverArray(tests);
+     
+     IteratWithContains(tests);
+     
      
     
    }// End of main()
    
-   //this will iterate over the array of Vector and replace the input with white space
-   public static void IterateOverArray(Vector <String> testsCases) {
-	   for(String whiteSpace: testsCases) {
-		   
-		   whiteSpace= whiteSpace.replace("", " ");
-		   Utilities.runFSM(FSM, startState, whiteSpace, " ");
+   private static void IteratWithContains(Vector<String> testsCases) {
+	 
+	for(String whiteSpace: testsCases) {
+		whiteSpace= whiteSpace.replace("", " ");
+		String result = Utilities.runFSM(FSM, startState, whiteSpace, " ");
+		
+		if (result.contains("yes")) {
+			
+			System.out.println("\npublic void testCase" + testsCases + "(){"  + result + ");\n}");
+			//System.out.println(result);
+		}else {
+			System.out.println("\npublic void testCase" + testsCases + "(){"  + result + ");\n}");
+		}
+	   
 	   }
 	   
-   }
+	
+}
+
+
+
+////this will iterate over the array of Vector and replace the input with white space
+//   public static void IterateOverArray(Vector <String> testsCases) {
+//	   for(String whiteSpace: testsCases) {
+//		  // System.out.println("public void testCase" + testsCases + "(){");
+//		   
+//		   whiteSpace= whiteSpace.replace("", " ");
+//		   Utilities.runFSM(FSM, startState, whiteSpace, " ");
+//		   
+//		   
+//	   }
+//	   
+//   }
+   
+   
 }//End of class WMethod
 
 
